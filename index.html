@@ -1,0 +1,120 @@
+¡Excelente! Te explico en **texto plano** lo que te falta y lo que debes hacer paso a paso.
+
+---
+
+## 📋 **¿Qué está pasando?**
+
+El problema es que tienes instalada una librería llamada **"react-google-login"** que es muy vieja (de hace años) y no funciona con la versión de React que tienes (React 18). 
+
+Esta librería fue creada cuando React estaba en la versión 16 o 17, y nunca la actualizaron para que funcione con React 18. Por eso npm te dice que hay un conflicto.
+
+---
+
+## ✅ **Solución en texto plano**
+
+### **PASO 1: Eliminar la librería vieja**
+
+Ve a tu archivo `package.json` que está en la carpeta `frontend`, busca la línea que dice:
+
+```
+"react-google-login": "^5.2.2"
+```
+
+Y **elimínala completamente**. Bórrala de la lista de dependencias.
+
+---
+
+### **PASO 2: Agregar la librería nueva**
+
+En el mismo archivo `package.json`, en la sección de "dependencies", agrega esta línea:
+
+```
+"@react-oauth/google": "^0.11.0"
+```
+
+---
+
+### **PASO 3: Guardar el archivo**
+
+Guarda los cambios en `package.json` (Ctrl + S).
+
+---
+
+### **PASO 4: Eliminar carpetas viejas**
+
+Abre tu terminal (PowerShell) y ejecuta estos comandos uno por uno:
+
+```
+cd C:\xampp\htdocs\app-matev2\frontend
+Remove-Item -Recurse -Force node_modules
+Remove-Item -Force package-lock.json
+```
+
+Esto elimina las carpetas donde están instaladas todas las librerías para que puedas instalar todo desde cero.
+
+---
+
+### **PASO 5: Instalar las dependencias (con la solución rápida)**
+
+Ejecuta este comando en la terminal:
+
+```
+npm install --legacy-peer-deps
+```
+
+El `--legacy-peer-deps` le dice a npm que ignore los conflictos de versiones y que instale todo como pueda.
+
+---
+
+### **PASO 6: Ejecutar el proyecto**
+
+Una vez que termine la instalación, ejecuta:
+
+```
+npm run dev
+```
+
+---
+
+## 📝 **Resumen de lo que debes hacer (lista de tareas)**
+
+- [ ] **Abrir** el archivo `frontend/package.json`
+- [ ] **Buscar** la línea que dice `"react-google-login"`
+- [ ] **Eliminar** esa línea completamente
+- [ ] **Agregar** la línea `"@react-oauth/google": "^0.11.0"`
+- [ ] **Guardar** el archivo
+- [ ] **Abrir** la terminal en la carpeta `frontend`
+- [ ] **Ejecutar** `Remove-Item -Recurse -Force node_modules`
+- [ ] **Ejecutar** `Remove-Item -Force package-lock.json`
+- [ ] **Ejecutar** `npm install --legacy-peer-deps`
+- [ ] **Ejecutar** `npm run dev`
+
+---
+
+## ⚠️ **Y después de instalar...**
+
+El botón de "Iniciar sesión con Google" va a cambiar un poco porque la nueva librería funciona diferente. Vas a necesitar actualizar el archivo `Login.jsx` para que use la nueva librería.
+
+Pero eso lo hacemos después de que la instalación funcione. Primero resuelve este error y luego te ayudo con el cambio del código.
+
+---
+
+## 💡 **¿Por qué pasó esto?**
+
+Cuando creaste el proyecto, copiaste un `package.json` que tenía una librería vieja. Es muy común cuando se usan ejemplos de proyectos que tienen años. La solución es usar la versión moderna de la librería.
+
+---
+
+## 📌 **¿Qué hacer si aún falla?**
+
+Si después de todo esto aún tienes problemas, ejecuta:
+
+```
+npm cache clean --force
+```
+
+Y luego repite el paso 5 (`npm install --legacy-peer-deps`).
+
+---
+
+¿Entendiste? La solución es: **eliminar la librería vieja, agregar la nueva, limpiar las carpetas e instalar todo de nuevo**.
